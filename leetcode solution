@@ -1,0 +1,20 @@
+class Solution {
+public:
+    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+
+        // check if the first list is empth, if yes return the second list
+        if ( list1 == NULL) return list2;
+        // check if the second list is empth, if yes return the first list
+        if ( list2 == NULL) return list1;
+
+        // compare the two values and recursive call mergTwolists with the right order
+	    	if(list1 -> val <= list2 -> val){
+			      list1 -> next = mergeTwoLists(list1 -> next, list2); 
+            return list1;
+        }
+        else{
+            list2 -> next = mergeTwoLists(list1, list2  -> next);
+            return list2;
+        }
+    }
+};
